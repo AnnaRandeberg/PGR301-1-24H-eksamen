@@ -1,0 +1,47 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
+Description: >
+  GenerateLambdaImage0508
+
+  Sample SAM Template for GenerateLambdaImage0508
+
+Parameters:
+  BucketName:
+    Type: String
+    Description: "S3 bucket images"
+
+Globals:
+  Function:
+    Timeout: 40
+    MemorySize: 128
+    LoggingConfig:
+      LogFormat: JSON
+
+Resources:
+  CreatingNewImageFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: hello_world/
+      Handler: app.lambda_handler
+      Runtime: python3.9
+      Architectures:
+        - x86_64
+      Role: arn:aws:iam::244530008913:role/aws-role-lambda00111
+      Environment:
+        Variables:
+          BUCKET_NAME: !Ref BucketName
+          CANDIDATE_NR: 41
+      Events:
+        GenerateImage:
+          Type: Api
+          Properties:
+            Path: /generating-image
+            Method: post
+
+Outputs:
+  CreatingNewImageFunctionApi:
+    Description: API Gateway endpoint URL for Creating new image function
+    Value: !Sub "https://${ServerlessRestApi}.execute-api.${AWS::Region}.amazonaws.com/Prod/generating-image/"
+  CreatingNewImageFunctionArn:
+    Description: Function to make a new image ARN
+    Value: !GetAtt CreatingNewImageFunction.Arn
