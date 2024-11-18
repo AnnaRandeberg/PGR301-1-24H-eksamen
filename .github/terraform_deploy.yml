@@ -1,3 +1,4 @@
+#lagde en kommentar for å teste terraform plan workflow
 on:
   push:
     branches:
