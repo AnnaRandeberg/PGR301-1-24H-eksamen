@@ -1,10 +1,9 @@
-name: Deploy Terraform
 
 on:
   push:
-    paths:
-      - 'infra/**'
-
+    branches:
+      - main
+      - '**'
 
 defaults:
   run:
