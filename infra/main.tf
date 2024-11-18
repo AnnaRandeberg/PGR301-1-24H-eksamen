@@ -1,4 +1,4 @@
-#tester pliiis si det funker
+#endring i main for å teste om terraform plan funker i ny branch
 #source: https://github.com/glennbechdevops/terraform-state/blob/main/lambda.tf
 resource "aws_iam_role" "lambda_exec_role" {
   assume_role_policy = jsonencode({
