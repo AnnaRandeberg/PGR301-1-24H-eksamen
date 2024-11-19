@@ -23,7 +23,7 @@ jobs:
 
       - name: Build Docker image
         run: |
-          docker build . -t anra024/41-java-sqs-client:latest
+          docker build ./java_sqs_client -t anra024/41-java-sqs-client:latest
 
       - name: Push Docker image
         run: |
