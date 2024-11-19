@@ -22,9 +22,9 @@ jobs:
           password: ${{ secrets.DOCKER_PASSWORD }}
 
       - name: Build and push Docker image
-      run: |
-        rev=$(git rev-parse --short HEAD)  # Henter commit hash
-        docker build ./java_sqs_client -t anra024/41-java-sqs-client:latest
-        docker tag anra024/41-java-sqs-client:latest anra024/41-java-sqs-client:$rev
-        docker push anra024/41-java-sqs-client:latest
-        docker push anra024/41-java-sqs-client:$rev
+        run: |
+          rev=$(git rev-parse --short HEAD)  # Henter commit hash
+          docker build ./java_sqs_client -t anra024/41-java-sqs-client:latest
+          docker tag anra024/41-java-sqs-client:latest anra024/41-java-sqs-client:$rev
+          docker push anra024/41-java-sqs-client:latest
+          docker push anra024/41-java-sqs-client:$rev
