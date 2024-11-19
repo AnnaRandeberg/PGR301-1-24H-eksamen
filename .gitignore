@@ -2,3 +2,16 @@
 *.pem
 *.venv/
 terraform_1.9.0_linux_amd64.zip
+
+*.war
+target/
+*.nar
+*.env
+*.dockerignore
+docker-compose.override.yml
+*.log
+.idea/
+*.jar
+*.ear
+*.tar.gz
+*.rar

@@ -1,7 +1,7 @@
 on:
   push:
-    paths:
-      - 'sam_lambda/**'
+    branches:
+      - main
 
 
 defaults:
