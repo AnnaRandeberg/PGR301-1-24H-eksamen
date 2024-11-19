@@ -21,10 +21,10 @@ jobs:
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
 
-      - name: Build Docker image
-        run: |
-          docker build ./java_sqs_client -t anra024/41-java-sqs-client:latest
-
-      - name: Push Docker image
-        run: |
-          docker push anra024/41-java-sqs-client:latest
+      - name: Build and push Docker image
+      run: |
+        rev=$(git rev-parse --short HEAD)  
+        docker build . -t anra024/41-java-sqs-client:latest
+        docker tag anra024/41-java-sqs-client:latest anra024/41-java-sqs-client:$rev
+        docker push anra024/41-java-sqs-client:latest
+        docker push anra024/41-java-sqs-client:$rev
