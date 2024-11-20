@@ -1,7 +1,7 @@
 # Couch Explorers: Eksamensbesvarelse 2024
 
 ## Oppgave 1 - AWS Lambda
-    A. Oppgave: Implementer en Lambda-funksjon med SAM og API Gateway
+##  A. Oppgave: Implementer en Lambda-funksjon med SAM og API Gateway
     
 ### Kort om hva oppgaven gjør
 Her har jeg oppdatert Lambda-funksjonen ved hjelp av AWS SAM og API Gateway for å generere et bilde. Prosessen fungerer slik at en prompt sendes via en POST-forespørsel, som Lambda-funksjonen mottar og behandler. Det genererte bildet lagres i S3-bucketen pgr301-couch-explorers, under objektet 41. Inne i mappen 41/generated_images/ finner man de genererte bildene.
