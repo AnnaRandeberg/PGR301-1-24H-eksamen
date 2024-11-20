@@ -55,7 +55,7 @@ def lambda_handler(event, context):
         return {
             "statusCode": 200,
             "body": json.dumps({
-                "message": "Ferdig! du har nå et generert bilde, gratulerer!!", 
+                "message": "Done! You now have a generated image, congratulations!!", 
                 
             })
             
@@ -65,7 +65,7 @@ def lambda_handler(event, context):
         return {
             "statusCode": 500,
             "body": json.dumps({
-                "message": "oii det funket ikke, skjedde en feil:(((",
+                "message": "Error, didnt work!!:(((",
                 
             })
     }

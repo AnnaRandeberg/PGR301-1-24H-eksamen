@@ -13,7 +13,7 @@ Parameters:
 Globals:
   Function:
     Timeout: 40
-    MemorySize: 128
+    MemorySize: 512
     LoggingConfig:
       LogFormat: JSON
 
