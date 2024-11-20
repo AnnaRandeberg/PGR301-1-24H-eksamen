@@ -65,10 +65,31 @@ anra024:~/environment/PGR301-1-24H-eksamen/sam_lambda/GenerateLambdaImage0508
 Naviger til S3-bucketen pgr301-couch-explorers og søk på 41.
 Det genererte bilde finner man i /generated_images/    
 
+
+### eks på generert bilde ved å bruke prompten "vintage paris trip" 
+
+![s3 bucket bilde](./images/vintage-paris-trip.png)
+
+#### Timeout: har endret timeout til 40
+#### IAM-rolle: IAM-rollen jeg brukte til denne oppgaven heter aws-role-lambda00111. Rollen ble opprettet før jeg startet oppgaven, og jeg la til nødvendige tillatelser i template.yaml under AttachPoliciesToExistingRole. Her inkluderte jeg både S3-tillatelser og Bedrock-tillatelser for å sikre at funksjonen kunne utføre sine oppgaver. 
+#### Nødvendige tillatelser knyttet til rollen: s3:PutObject, s3:GetObject, s3:ListBucket. Disse er brukt for å laste opp og hente filer og liste objektene. Har også brukt bedrock:InvokeModel for å bruke bedrock til å generere bilder. Har også brukt AWSLambdaBasicExecutionRole for grunnelggende tillatelser for at aws funkjsonene skal kjøre, og gir meg logg data. 
+
+Regionkonfigurasjon: Har brukt eu-west-1. 
+
+
 ## 1B: Opprett en GitHub Actions Workflow for SAM-deploy 
 
 ### Kort om hva oppgaven gjør
-Jeg opprettet en github actions workflow som heter deploy_lambda.yml for å automatisere prossessen ved deploy av funksjonen GenerateLambdaImage0508, slik at hver gang jeg pusher til main så vil det bli bygget og deployet til aws. 
+Jeg opprettet en github actions workflow som heter deploy_lambda.yml for å automatisere prossessen med å bygge og deploye Lambda-funksjonen GenerateLambdaImage0508 til AWS. 
+- Den bygger funksjonen ved hjelp av sam build.
+- Deployer ved hjelp av sam deploy, og laster opp koden til s3 bucketen pgr301-couch-explorers. 
+- Den bruker aws secrets for å få tilgang til AWS
+
+eks. på hvordan aws access keysene mine er lagt til i github repoet mitt
+
+![aws access key lagt til i github](./images/repo-secrets.png)
+
+
 
 ### Link til github-actions workflow:
     
