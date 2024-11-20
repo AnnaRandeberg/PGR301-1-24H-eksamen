@@ -1,24 +1,22 @@
 # Couch Explorers: Eksamensbesvarelse 2024
 
-Oppgave 1 - AWS Lambda
+## Oppgave 1 - AWS Lambda
     A. Oppgave: Implementer en Lambda-funksjon med SAM og API Gateway
     
-    Kort om hva oppgaven gjør
+### Kort om hva oppgaven gjør
 Her har jeg oppdatert Lambda-funksjonen ved hjelp av AWS SAM og API Gateway for å generere et bilde. Prosessen fungerer slik at en prompt sendes via en POST-forespørsel, som Lambda-funksjonen mottar og behandler. Det genererte bildet lagres i S3-bucketen pgr301-couch-explorers, under objektet 41. Inne i mappen 41/generated_images/ finner man de genererte bildene.
 
-
-|-------------------------------------------------------------------------------------------------------------------------|
-| Leveransekrav      | lenke                                                                                              |
-|-------------------------------------------------------------------------------------------------------------------------|
-| HTTP-endepunkt     | https://gofe2njwi3.execute-api.eu-west-1.amazonaws.com/Prod/generating-image/                      |
-|-------------------------------------------------------------------------------------------------------------------------|
-| Link til github-   | https://github.com/AnnaRandeberg/PGR301-1-24H-eksamen/actions/runs/11863054892/job/33063726910     |
-| actions workflow   |                                                                                                    |
-|-------------------------------------------------------------------------------------------------------------------------|
+### Leveransekrav
+    |-------------------------------------------------------------------------------------------------------------------------|
+    | Leveransekrav      | lenke                                                                                              |
+    |-------------------------------------------------------------------------------------------------------------------------|
+    | HTTP-endepunkt     | https://gofe2njwi3.execute-api.eu-west-1.amazonaws.com/Prod/generating-image/                      |
+    |-------------------------------------------------------------------------------------------------------------------------|
+    | Link til github-   | https://github.com/AnnaRandeberg/PGR301-1-24H-eksamen/actions/runs/11863054892/job/33063726910     |
+    | actions workflow   |                                                                                                    |
+    |-------------------------------------------------------------------------------------------------------------------------|
       
-
-### A. Oppgave: Implementer en Lambda-funksjon med SAM og API Gateway
-#### Hvordan teste min leveranse
+### Hvordan teste min leveranse
 
 Bruk Postman eller curl for å sende en POST-forespørsel til Lambda-funksjonens HTTP-endepunkt.
 
@@ -35,24 +33,26 @@ Metode: POST
 
 Eksempel på body:
 
-        Eks prompt:
+Eks prompt:
+
         {
           "prompt": "Vintage Paris Trip"
         }
 
- ## Postman Test eksempel
+ ### Postman Test eksempel
 
 Her er et skjermbilde av Postman-testen min:
 
 ![Postman Test](./images/postman.png)
 
 
-curl
+### curl test
         
 Terminalplassering
 anra024:~/environment/PGR301-1-24H-eksamen/sam_lambda/GenerateLambdaImage0508
 
-kommando: 
+### kommando: 
+
         curl -X POST \
         https://gofe2njwi3.execute-api.eu-west-1.amazonaws.com/Prod/generating-image/ \
         -H "Content-Type: application/json" \
@@ -61,45 +61,51 @@ kommando:
    
    ![curl Test](./images/curl.png)
    
-  Verifisering i S3:
+### Verifisering i S3:
 Naviger til S3-bucketen pgr301-couch-explorers og søk på 41.
 Det genererte bilde finner man i /generated_images/    
 
-   ### 1B: Opprett en GitHub Actions Workflow for SAM-deploy 
+## 1B: Opprett en GitHub Actions Workflow for SAM-deploy 
 
-Link til github-actions workflow:
-    
-    
-    https://github.com/AnnaRandeberg/PGR301-1-24H-eksamen/actions/runs/11863054892/job/33063726910 
-   
-   
-   
-Oppgave 2 - Infrastruktur med Terraform og SQS
+### Kort om hva oppgaven gjør
+Jeg opprettet en github actions workflow som heter deploy_lambda.yml for å automatisere prossessen ved deploy av funksjonen GenerateLambdaImage0508, slik at hver gang jeg pusher til main så vil det bli bygget og deployet til aws. 
 
-Kort om hva oppgaven gjør
+### Link til github-actions workflow:
+    
+        https://github.com/AnnaRandeberg/PGR301-1-24H-eksamen/actions/runs/11863054892/job/33063726910 
+   
+   
+   
+   
+   
+   
+## Oppgave 2 - Infrastruktur med Terraform og SQS
+
+### Kort om hva oppgaven gjør
 I denne oppgaven har jeg implementert en løsning ved hjelp av Terraform som integrerer AWS SQS og Lambda for å generere bilder. Lambda-funksjonen mottar meldinger fra SQS-køen, bruker innholdet i meldingene til å lage bilder, og lagrer de genererte bildene i S3-bucketen pgr301-couch-explorers under stien /41/images/
         
 
-Oppgavesvar
+### Oppgavesvar
 Løsningen min er skalerbar fordi bruk av SQS-køen sørger for at meldinger blir håndtert i et kontrollert tempo, noe som forhindrer overbelastning av Lambda-funksjonen. Dette gjør at systemet kan håndtere en økt mengde forespørsler uten å miste stabilitet.
 
 IAM-policyen min er designet for å være sikker ved kun å inkludere nødvendige tillatelser som kreves for å fullføre oppgaven. Et problem jeg møtte underveis var at jeg hadde glemt å inkludere tillatelser for Bedrock i policyen. Dette førte til at bildene mine ikke ble lastet opp som forventet. Jeg oppdaget feilen ved å teste SQS-køen og analysere feilmeldinger, som informerte meg om manglende Bedrock-tillatelse. Etter å ha lagt til de nødvendige tillatelsene, fungerte løsningen som den skulle.
 
 
+### Leveransekrav
+    |---------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+    | Leveransekrav                                                 |  lenke                                                                                              |
+    |---------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+    | Lenke til kjørt GitHub Actions workflow                       |  https://github.com/AnnaRandeberg/PGR301-1-24H-eksamen/actions/runs/11898369726/job/33154714988     |
+    |---------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+    | Lenke til en fungerende GitHub Actions workflow (ikke main)   |  https://github.com/AnnaRandeberg/PGR301-1-24H-eksamen/actions/runs/11897912330                     |                                                       
+    |---------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+    | SQS-Kø URL                                                    |  https://sqs.eu-west-1.amazonaws.com/244530008913/41-image-queue                                    |                    
+    |---------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 
-|---------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| Leveransekrav                                                 |  lenke                                                                                              |
-|---------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| Lenke til kjørt GitHub Actions workflow                       |  https://github.com/AnnaRandeberg/PGR301-1-24H-eksamen/actions/runs/11898369726/job/33154714988     |
-|---------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| Lenke til en fungerende GitHub Actions workflow (ikke main)   |  https://github.com/AnnaRandeberg/PGR301-1-24H-eksamen/actions/runs/11897912330                     |                                                       
-|---------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| SQS-Kø URL                                                    |  https://sqs.eu-west-1.amazonaws.com/244530008913/41-image-queue                                    |                    
-|---------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 
+### Hvordan teste min løsning: 
 
-Hvordan teste min løsning: 
-    Med AWS Management Console:
+### Med AWS Management Console
 
 naviger til sqs
 søk på : 41-image-queue
@@ -107,8 +113,8 @@ søk på : 41-image-queue
 trykk på knappen vist på bildet
 ![trykk på send and recieve messages bilde](./images/sendmessageSQS.png)
 
-eks prompt: 
-    
+### eks prompt: 
+
     {
         "prompt": "A cat with a hat"
     }
