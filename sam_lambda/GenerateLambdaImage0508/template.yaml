@@ -37,7 +37,25 @@ Resources:
           Properties:
             Path: /generating-image
             Method: post
-
+            
+  AttachPoliciesToExistingRole:
+    Type: AWS::IAM::ManagedPolicy
+    Properties:
+      PolicyDocument:
+        Version: '2012-10-17'
+        Statement:
+          - Effect: Allow
+            Action:
+              - s3:PutObject
+              - s3:GetObject
+            Resource:
+              - !Sub "arn:aws:s3:::${BucketName}/*"
+          - Effect: Allow
+            Action:
+              - bedrock:InvokeModel
+            Resource: "*"
+      Roles:
+        - aws-role-lambda00111
 Outputs:
   CreatingNewImageFunctionApi:
     Description: API Gateway endpoint URL for Creating new image function

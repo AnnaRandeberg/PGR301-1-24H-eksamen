@@ -5,8 +5,8 @@ codeuri = "/home/ec2-user/environment/PGR301-1-24H-eksamen/sam_lambda/GenerateLa
 runtime = "python3.9"
 architecture = "x86_64"
 handler = "app.lambda_handler"
-source_hash = "555d9a7cf1a02830eb9d681f9a710ce7ea6afedcbbec2aef4f64456971b1c910"
-manifest_hash = ""
+source_hash = "c3d4935e8e003fb10a2aa73e4d517425ea0bbfec0fb3f6d6ae7d932906d9d6b9"
+manifest_hash = "3298f13049d19cffaa37ca931dd4d421"
 packagetype = "Zip"
 functions = ["CreatingNewImageFunction"]
 
