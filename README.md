@@ -1,3 +1,85 @@
+# Couch Explorers: Eksamensbesvarelse 2024
+
+Oppgave 1 - AWS Lambda
+    A. Oppgave: Implementer en Lambda-funksjon med SAM og API Gateway
+
+        |-------------------------------------------------------------------------------------------------------------------------|
+        | Leveranse          | Beskrivelse                                                                                        |
+        |-------------------------------------------------------------------------------------------------------------------------|
+        | HTTP-endepunkt     | https://gofe2njwi3.execute-api.eu-west-1.amazonaws.com/Prod/generating-image/                      |
+        |-------------------------------------------------------------------------------------------------------------------------|
+        | Eks. prompt        | "Vintage paris Trip"                                                                               |
+        | ------------------------------------------------------------------------------------------------------------------------|
+        | Link til github-   | https://github.com/AnnaRandeberg/PGR301-1-24H-eksamen/actions/runs/11863054892/job/33063726910     |
+        | actions workflow   |                                                                                                    |
+        | ------------------------------------------------------------------------------------------------------------------------|
+      
+
+        
+      
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Eksamens Oppgave:
+
 # PGR301 EKSAMEN 2024 Couch Explorers - Bærekraftig turisme fra sofakroken ! 
 
 <img width="1181" alt="image" src="img/header.png">
