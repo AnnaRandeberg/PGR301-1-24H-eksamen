@@ -2,6 +2,7 @@
 *.pem
 *.venv/
 terraform_1.9.0_linux_amd64.zip
+env/
 
 *.war
 target/
@@ -15,3 +16,10 @@ docker-compose.override.yml
 *.ear
 *.tar.gz
 *.rar
+.venv/
+
+*.pyc
+__pycache__/
+
+Python-3.9.9/
+Python-3.9.9.tgz

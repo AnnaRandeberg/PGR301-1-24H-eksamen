@@ -2,6 +2,10 @@
 
 Oppgave 1 - AWS Lambda
     A. Oppgave: Implementer en Lambda-funksjon med SAM og API Gateway
+    
+    Kort om hva oppgaven gjør
+Her har jeg oppdatert Lambda-funksjonen ved hjelp av AWS SAM og API Gateway for å generere et bilde. Prosessen fungerer slik at en prompt sendes via en POST-forespørsel, som Lambda-funksjonen mottar og behandler. Det genererte bildet lagres i S3-bucketen pgr301-couch-explorers, under objektet 41. Inne i mappen 41/generated_images/ finner man de genererte bildene.
+
 
         |-------------------------------------------------------------------------------------------------------------------------|
         | Leveranse          | Beskrivelse                                                                                        |
@@ -10,13 +14,61 @@ Oppgave 1 - AWS Lambda
         |-------------------------------------------------------------------------------------------------------------------------|
         | Eks. prompt        | "Vintage paris Trip"                                                                               |
         | ------------------------------------------------------------------------------------------------------------------------|
-        | Link til github-   | https://github.com/AnnaRandeberg/PGR301-1-24H-eksamen/actions/runs/11863054892/job/33063726910     |
+        | Link til github-   | https://github.com/AnnaRandeberg/PGR301-1-24H-eksamen/actions/runs/11863054892/job/33063726910    |
         | actions workflow   |                                                                                                    |
         | ------------------------------------------------------------------------------------------------------------------------|
       
 
+### A. Oppgave: Implementer en Lambda-funksjon med SAM og API Gateway
+#### Hvordan teste min leveranse
+
+Bruk Postman eller curl for å sende en POST-forespørsel til Lambda-funksjonens HTTP-endepunkt.
+
+HTTP-endepunkt:
+https://gofe2njwi3.execute-api.eu-west-1.amazonaws.com/Prod/generating-image/
+
+Header:
+Content-Type: application/json
+
+Body (JSON):
+Velg raw format hvis man bruker Postman.
+Metode: POST
+
+Eksempel på body:
+
+        Eks prompt:
+        {
+          "prompt": "Vintage Paris Trip"
+        }
+
+ ## Postman Test eksempel
+
+Her er et skjermbilde av Postman-testen min:
+
+![Postman Test](./images/postman.png)
+
+
+curl: 
         
-      
+        Terminalplassering:
+anra024:~/environment/PGR301-1-24H-eksamen/sam_lambda/GenerateLambdaImage0508
+
+        kommando: 
+        curl -X POST \
+  https://gofe2njwi3.execute-api.eu-west-1.amazonaws.com/Prod/generating-image/ \
+  -H "Content-Type: application/json" \
+  -d '{"prompt": "Vintage Paris Trip"}'
+
+   
+   ![curl Test](./images/curl.png)
+   
+  Verifisering i S3:
+Naviger til S3-bucketen pgr301-couch-explorers og søk på 41.
+Det genererte bilde finner man i /generated_images/    
+
+   ### B: Opprett en GitHub Actions Workflow for SAM-deploy    
+   
+   
         
 
 
