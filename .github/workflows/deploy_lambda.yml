@@ -17,10 +17,10 @@ jobs:
       - uses: actions/checkout@v2
       - uses: actions/setup-python@v2
       - uses: aws-actions/setup-sam@v1
-      - name: Build and Deploy Lambda
+      - uses: aws-actions/configure-aws-credentials@v1
         with:
-          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          AWS_REGION: eu-west-1
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: eu-west-1
       - run: sam build --use-container
       - run: sam deploy --no-confirm-changeset --no-fail-on-empty-changeset --stack-name GenerateLambdaImage0508 --s3-bucket pgr301-couch-explorers --capabilities CAPABILITY_IAM --region eu-west-1
