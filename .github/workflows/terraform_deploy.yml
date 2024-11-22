@@ -1,4 +1,4 @@
-
+name: Terraform deployment
 
 on:
   push:
@@ -13,16 +13,17 @@ defaults:
 jobs:
   terraform:
     runs-on: ubuntu-latest
-
+    env:
+      AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+      AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+      AWS_REGION: eu-west-1
+      ALARM_EMAIL: anra024@student.kristiania.no
     steps:
-      - uses: actions/checkout@v2
-      - uses: aws-actions/configure-aws-credentials@v1
-        with:
-          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          aws-region: eu-west-1
-
-      - uses: hashicorp/setup-terraform@v1
+      - name: Checkout repository
+        uses: actions/checkout@v2
+        
+      - name : Setup Terraform
+        uses: hashicorp/setup-terraform@v1
         with:
           terraform_version: 1.9.0
 
@@ -31,8 +32,8 @@ jobs:
 
       - name: Terraform Plan
         if: github.ref != 'refs/heads/main'
-        run: terraform plan
+        run: terraform plan -var="alarm_email=$ALARM_EMAIL" -no-color
         
       - name: Terraform Apply
         if: github.ref == 'refs/heads/main'
-        run: terraform apply -auto-approve
+        run: terraform apply -var="alarm_email=$ALARM_EMAIL" -auto-approve
