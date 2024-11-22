@@ -3,7 +3,7 @@
 ## Oppgave 1 - AWS Lambda
 ##  A. Oppgave: Implementer en Lambda-funksjon med SAM og API Gateway
 
-## Leveransekrav
+## Leveransekrav:
 ### HTTP-endepunkt: 
     https://gofe2njwi3.execute-api.eu-west-1.amazonaws.com/Prod/generating-image/    
 
@@ -52,7 +52,7 @@ IAM-policyen min inkluderer kun nødvendige tillatelser som kreves for å fullf�
 send en prompt bilde
 ![bilde eks. av å sende en promt](./images/message-to-sqs-queue-example.png)
 
-Eks. bilde av bilder som ligger i sqs køen
+Eks. av bilder som ligger i sqs køen
 ![bilde eks. av sqs køen](./images/sqs-queue.png)
 
 Verifisering i S3:
@@ -99,7 +99,8 @@ Bildet nedenfor viser at jeg har lagt til brukernavnet og token mitt i github se
 ![dockerhub passord og brukernavn](./images/dockerhub-username&password-in-github-secrets.png)
 
 ## Leveransekrav:
-### Beskrivelse av taggestrategi: Jeg har valgt å bruke både en latest-tag og en commit-hash tag. Ved å bruke latest er det lett å finne det nyeste imaget hvis man skal teste og da slipper man å tenke på en unik identifikator, men samtidig syns jeg det var viktig å kunne spore imagene igjen så derfor tenkte jeg det var lurt å legge til commit hash også. Hvis man f.eks vil debugge eller gå tilbake til en tidligere vrrsjon så er det lurt å ha med en commit hash som gjør det lett å spore. 
+### Beskrivelse av taggestrategi: 
+Jeg har valgt å bruke både en latest-tag og en commit-hash tag. Ved å bruke latest er det lett å finne det nyeste imaget hvis man skal teste og da slipper man å tenke på en unik identifikator, men samtidig syns jeg det var viktig å kunne spore imagene igjen så derfor tenkte jeg det var lurt å legge til commit hash også. Hvis man f.eks vil debugge eller gå tilbake til en tidligere vrrsjon så er det lurt å ha med en commit hash som gjør det lett å spore. 
 
 Her er et bilde av hvordan det ser ut i dockerhuben min med både en commit hash tag og en latest tag:
 ![dockerhub bilde av tag](./images/dockerhub-tag.png)
@@ -112,7 +113,8 @@ Leveransekrav:
 ### sqs url: 
     https://sqs.eu-west-1.amazonaws.com/244530008913/41-image-queue
     
-    ## Oppgave 4: Metrics og overvåkning
+
+## Oppgave 4: Metrics og overvåkning
 
 
 Alarmen min er konfigurert til å utløses hvis alderen på den eldste meldingen i køen overstiger terskelen min som er satt til 10 sekunder. 
