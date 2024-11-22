@@ -98,3 +98,34 @@ data "archive_file" "lambda_zip" {
   source_file = "${path.module}/lambda_sqs.py"
   output_path = "${path.module}/lambda_function_payload.zip"
 }
+
+
+
+#source: https://github.com/glennbechdevops/cloudwatch_alarms_terraform
+# CloudWatch Alarm for SQS ApproximateAgeOfOldestMessage
+resource "aws_cloudwatch_metric_alarm" "sqs_oldest_message_age" {
+  alarm_name          = "${var.prefix}-sqs-oldest-message-age"
+  namespace           = "AWS/SQS"
+  metric_name         = "ApproximateAgeOfOldestMessage"
+  dimensions = {
+    QueueName = aws_sqs_queue.sqs_queue.name
+  }
+  comparison_operator = "GreaterThanThreshold"
+  threshold           = var.alarm_threshold 
+  evaluation_periods  = 1 #endret denne til 1 for å teste alarmen min
+  period              = 60 
+  statistic           = "Maximum"
+  
+  alarm_description   = "Triggered when the age of the oldest message in the SQS queue exceeds the threshold."
+  alarm_actions       = [aws_sns_topic.sqs_alarm_topic.arn]
+}
+
+resource "aws_sns_topic" "sqs_alarm_topic" {
+  name = "${var.prefix}-sqs-alarm-topic"
+}
+
+resource "aws_sns_topic_subscription" "sqs_alarm_email_subscription" {
+  topic_arn = aws_sns_topic.sqs_alarm_topic.arn
+  protocol  = "email"
+  endpoint  = var.alarm_email  
+}
