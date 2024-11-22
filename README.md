@@ -3,8 +3,8 @@
 ## Oppgave 1 - AWS Lambda
 ##  A. Oppgave: Implementer en Lambda-funksjon med SAM og API Gateway
 
-    ## Leveransekrav
-    ### HTTP-endepunkt: 
+## Leveransekrav
+### HTTP-endepunkt: 
     https://gofe2njwi3.execute-api.eu-west-1.amazonaws.com/Prod/generating-image/    
 
 
@@ -26,9 +26,8 @@ Det genererte bilde finner man i /generated_images/
 
 ## 1B: Opprett en GitHub Actions Workflow for SAM-deploy 
 
-    ## Leveransekrav: 
-
-    ###  Lenke til github-actions workflow: 
+## Leveransekrav: 
+### Lenke til github-actions workflow: 
     https://github.com/AnnaRandeberg/PGR301-1-24H-eksamen/actions/runs/11863054892/job/33063726910
 
 
@@ -37,9 +36,6 @@ eks. på hvordan aws access keysene mine er lagt til i github repoet mitt
 ![aws access key lagt til i github](./images/repo-secrets.png)
 
 
-
-
-   
 ## Oppgave 2 - Infrastruktur med Terraform og SQS
 ## A. Infrastruktur som kode
 
@@ -65,10 +61,7 @@ Det genererte bilde finner man i /images/
 
 
 ## 2B. Opprett en GitHub Actions Workflow for Terraform
-
-Lagde en github actions workflow som jeg kalte terraform_deploy.yml. Dette skal automatisere deploy prosessen av infrastrukturen. Den kjører terraform apply på main og terraform plan på andre brancher. Har brukt github secrets for å legge til aws access keysene. 
-
- ## Leveransekrav
+## Leveransekrav
 ### Lenke til kjørt GitHub Actions workflow:  
         
         https://github.com/AnnaRandeberg/PGR301-1-24H-eksamen/actions/runs/11898369726/job/33154714988 
@@ -81,7 +74,9 @@ Lagde en github actions workflow som jeg kalte terraform_deploy.yml. Dette skal 
 
 ### SQS-Kø URL:  
     
-        https://sqs.eu-west-1.amazonaws.com/244530008913/41-image-queue  
+        https://sqs.eu-west-1.amazonaws.com/244530008913/41-image-queue
+
+Lagde en github actions workflow som jeg kalte terraform_deploy.yml. Dette skal automatisere deploy prosessen av infrastrukturen. Den kjører terraform apply på main og terraform plan på andre brancher. Har brukt github secrets for å legge til aws access keysene.   
         
 
 ### Branch protection rule
