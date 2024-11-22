@@ -2,25 +2,11 @@
 
 ## Oppgave 1 - AWS Lambda
 ##  A. Oppgave: Implementer en Lambda-funksjon med SAM og API Gateway
-    
-### Leveransekrav
-    |-------------------------------------------------------------------------------------------------------------------------|
-    | Leveransekrav      | lenke                                                                                              |
-    |-------------------------------------------------------------------------------------------------------------------------|
-    | HTTP-endepunkt     | https://gofe2njwi3.execute-api.eu-west-1.amazonaws.com/Prod/generating-image/                      |
-    |-------------------------------------------------------------------------------------------------------------------------|
-    | Link til github-   | https://github.com/AnnaRandeberg/PGR301-1-24H-eksamen/actions/runs/11863054892/job/33063726910     |
-    | actions workflow   |                                                                                                    |
-    |-------------------------------------------------------------------------------------------------------------------------|
-      
-   ### HTTP-endepunkt: 
-    
-        https://gofe2njwi3.execute-api.eu-west-1.amazonaws.com/Prod/generating-image/    
-        
-        
-   ###  Link til github-actions workflow: 
-    
-        https://github.com/AnnaRandeberg/PGR301-1-24H-eksamen/actions/runs/11863054892/job/33063726910
+
+    ## Leveransekrav
+    ### HTTP-endepunkt: 
+    https://gofe2njwi3.execute-api.eu-west-1.amazonaws.com/Prod/generating-image/    
+
 
 Her er et skjermbilde av en Postman test jeg gjorde:
 
@@ -40,16 +26,19 @@ Det genererte bilde finner man i /generated_images/
 
 ## 1B: Opprett en GitHub Actions Workflow for SAM-deploy 
 
+    ## Leveransekrav: 
+
+    ###  Lenke til github-actions workflow: 
+    https://github.com/AnnaRandeberg/PGR301-1-24H-eksamen/actions/runs/11863054892/job/33063726910
+
+
 eks. på hvordan aws access keysene mine er lagt til i github repoet mitt
 
 ![aws access key lagt til i github](./images/repo-secrets.png)
 
 
-### Link til github-actions workflow:
-    
-        https://github.com/AnnaRandeberg/PGR301-1-24H-eksamen/actions/runs/11863054892/job/33063726910 
-   
-   
+
+
    
 ## Oppgave 2 - Infrastruktur med Terraform og SQS
 ## A. Infrastruktur som kode
@@ -59,18 +48,6 @@ Løsningen min er skalerbar fordi SQS-køen sørger for at meldinger blir håndt
 
 ### IAM policy
 IAM-policyen min inkluderer kun nødvendige tillatelser som kreves for å fullføre oppgaven. Et problem jeg møtte underveis var at jeg hadde glemt å inkludere tillatelser for Bedrock i policyen. Dette førte til at bildene mine ikke ble lastet opp som forventet. Jeg oppdaget feilen ved å teste SQS-køen og analysere feilmeldinger, som informerte meg om manglende Bedrock-tillatelse. Etter å ha lagt til de nødvendige tillatelsene, fungerte løsningen som den skulle.
-
-
-### Leveransekrav
-    |---------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-    | Leveransekrav                                                 |  lenke                                                                                              |
-    |---------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-    | Lenke til kjørt GitHub Actions workflow                       |  https://github.com/AnnaRandeberg/PGR301-1-24H-eksamen/actions/runs/11898369726/job/33154714988     |
-    |---------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-    | Lenke til en fungerende GitHub Actions workflow (ikke main)   |  https://github.com/AnnaRandeberg/PGR301-1-24H-eksamen/actions/runs/11897912330                     |                                                       
-    |---------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-    | SQS-Kø URL                                                    |  https://sqs.eu-west-1.amazonaws.com/244530008913/41-image-queue                                    |                    
-    |---------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 
 
 ### image queue navn: 
@@ -91,7 +68,7 @@ Det genererte bilde finner man i /images/
 
 Lagde en github actions workflow som jeg kalte terraform_deploy.yml. Dette skal automatisere deploy prosessen av infrastrukturen. Den kjører terraform apply på main og terraform plan på andre brancher. Har brukt github secrets for å legge til aws access keysene. 
 
-
+ ## Leveransekrav
 ### Lenke til kjørt GitHub Actions workflow:  
         
         https://github.com/AnnaRandeberg/PGR301-1-24H-eksamen/actions/runs/11898369726/job/33154714988 
@@ -105,6 +82,7 @@ Lagde en github actions workflow som jeg kalte terraform_deploy.yml. Dette skal 
 ### SQS-Kø URL:  
     
         https://sqs.eu-west-1.amazonaws.com/244530008913/41-image-queue  
+        
 
 ### Branch protection rule
 For å forhindre at feilaktige endringer blir lagt til i main branchen har jeg laget en branch protection rule. Dette er for å sikre at terraform og workflows fungerer slik de skal. 
