@@ -63,9 +63,9 @@ Det genererte bilde finner man i /images/
 
 ## 2B. Opprett en GitHub Actions Workflow for Terraform
 ## Leveransekrav
-### Lenke til kjørt GitHub Actions workflow main som kun kjører terraform apply:  
+### Lenke til kjørt GitHub Actions workflow (main) som kun kjører terraform apply:  
         
-        https://github.com/AnnaRandeberg/PGR301-1-24H-eksamen/actions/runs/11898369726/job/33154714988
+        https://github.com/AnnaRandeberg/PGR301-1-24H-eksamen/actions/runs/11898369726
 
 
 ### Lenke til en fungerende GitHub Actions workflow (ikke main) som kun kjører terraform plan: 
@@ -81,7 +81,7 @@ Lagde en github actions workflow som jeg kalte terraform_deploy.yml. Dette skal 
         
 
 ### Branch protection rule
-For å forhindre at feilaktige endringer blir lagt til i main branchen har jeg laget en branch protection rule. Dette er for å sikre at terraform og workflows fungerer slik de skal. 
+For å forhindre at feilaktige endringer blir lagt til i main branchen har jeg laget en branch protection rule. 
 ![branch protection rule](./images/branch-protection-rule.png)
 
 
