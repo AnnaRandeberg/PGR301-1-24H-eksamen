@@ -186,4 +186,4 @@ I en mikrotjenestearkitektur har man eierskap til infrastrukturen, som gir stør
 
 Valget mellom serverless og mikrotjenester avhenger av prosjektets størrelse, kompleksitet, budsjett, teamets kompetanse, tid og ønsket grad av kontroll.
 
-Kilder: 
+
