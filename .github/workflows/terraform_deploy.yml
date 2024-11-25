@@ -30,7 +30,7 @@ jobs:
         run: terraform init
 
       - name: Terraform Plan
-        if: github.ref != 'refs/heads/main'
+        if: github.ref != 'refs/heads/main' 
         env:
           ALARM_EMAIL: ${{ secrets.ALARM_EMAIL }}
         run: terraform plan -var="alarm_email=${{ env.ALARM_EMAIL }}" -no-color
