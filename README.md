@@ -19,19 +19,11 @@ Det genererte bilde finner man i /generated_images/
     https://github.com/AnnaRandeberg/PGR301-1-24H-eksamen/actions/runs/12009869434/job/33475509473
 
 
-Bilde av hvordan aws access keysene mine er lagt til i github repoet mitt
-
-![aws access key lagt til i github](./images/repo-secrets.png)
-
-
 ## Oppgave 2 - Infrastruktur med Terraform og SQS
 ## A. Infrastruktur som kode
 
 ### image queue navn: 
     41-image-queue
-
-send en prompt bilde
-![bilde eks. av å sende en promt](./images/message-to-sqs-queue-example.png)
 
 Bilder som ligger i sqs køen min
 ![bilde eks. av sqs køen](./images/sqs-queue.png)
