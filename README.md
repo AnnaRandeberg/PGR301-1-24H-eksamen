@@ -120,10 +120,6 @@ Her er et bilde av hvordan det ser ut i dockerhuben min med både en commit hash
 
 Alarmen min er konfigurert til å utløses hvis alderen på den eldste meldingen i køen overstiger terskelen min som er satt til 10 sekunder. 
 
-La til alarm emailen min som en variabel i variables.tf og la til emailen min i github secrets. 
-
-bilde av min alarm email i github secrets: 
-![github secrets alarm email](./images/alarm-email.png)
 
 Her ser man et eksempel av når jeg overfylte køen og alarmen min gikk: 
 ![in-alarm](./images/in-alarm.png)
@@ -153,9 +149,9 @@ CI-prosessen i en mikrotjenestearkitektur er ganske lik som i serverless. Koden 
 ### 2. 
 Observability (overvåkning) endres betydelig når man går fra mikrotjenester til serverless-arkitektur, med utfordringer som logging og feilsøking i FaaS-arkitekturen. Dette skal vi se nærmere på.
 
-I en serverless-arkitektur håndteres infrastrukturen av skyleverandøren, som også tilbyr innebygde verktøy for overvåkning og logging. Et eksempel er AWS CloudWatch, som gir logger, alarmer og metrikker for hver funksjon. Dette gjør overvåkningen enklere, siden det blir lettere å oppdage feil (Kilde: Forelesning om alarmer og CloudWatch). En ulempe med dette er imidlertid at overvåkningen kan bli mer fragmentert. Hver funksjon har sin egen livssyklus, og overvåkningen skjer derfor på funksjonsnivå. Dette kan gjøre det utfordrende å få en helhetlig oversikt over systemet. For eksempel kan det bli vanskelig for et team som jobber med ulike deler av systemet å sette sammen informasjonen fra de ulike loggene for å forstå helheten.
+I en serverless-arkitektur håndteres infrastrukturen av skyleverandøren, som også tilbyr innebygde verktøy for overvåkning og logging. Et eksempel er AWS CloudWatch, som gir logger, alarmer og metrikker for hver funksjon. Dette gjør overvåkningen enklere, siden det blir lettere å oppdage feil. En ulempe med dette er imidlertid at overvåkningen kan bli mer fragmentert. Hver funksjon har sin egen livssyklus, og overvåkningen skjer derfor på funksjonsnivå. Dette kan gjøre det utfordrende å få en helhetlig oversikt over systemet. For eksempel kan det bli vanskelig for et team som jobber med ulike deler av systemet å sette sammen informasjonen fra de ulike loggene for å forstå helheten. Dette ble spesielt vist i forelesningen om alarmer og CloudWatch.
 
-I tillegg er cold starts en vanlig utfordring i serverless-arkitektur. Cold starts oppstår når en funksjon startes opp og det oppstår forsinkelser, noe som kan påvirke systemets ytelse negativt (Kilde: 03-githubactions-sls-lambda-part-1, slide 23).
+Som nevnt i forelesning 3 er cold starts en vanlig utfordring i serverless-arkitektur. Cold starts oppstår når en funksjon startes opp og det oppstår forsinkelser, noe som kan påvirke systemets ytelse negativt. 
 
 Mikrotjenester har færre komponenter sammenlignet med serverless-arkitektur, noe som gjør det enklere å få oversikt over applikasjonen og styre de ulike tjenestene. Samtidig er komponentene i en mikrotjeneste ofte større og mer komplekse, noe som kan skape utfordringer. Derfor brukes verktøy som Docker og Kubernetes for å gjøre det enklere å håndtere. Docker og Kubernetes gir utviklerne bedre kontroll over infrastrukturen og øker fleksibiliteten. Utviklerne kan selv bestemme hva de ønsker å overvåke og logge, siden de har bygget infrastrukturen fra bunnen av. Dette er en fordel sammenlignet med serverless-arkitektur, hvor overvåkningen er forhåndsdefinert av skyleverandøren. Selv om man kan velge hva man vil logge i serverless, er mulighetene mer begrenset.
 
@@ -164,11 +160,11 @@ Når det gjelder feilsøking, er dette vanligvis enklere i mikrotjenester. Syste
 ### 3. 
 Skalerbarhet og kostnadskontroll har ulike fordeler og ulemper i serverless- og mikrotjenestearkitektur, spesielt når det gjelder ressursytelse og kostnadsoptimalisering.
 
-I en serverless-arkitektur betaler man kun for datakraften som faktisk brukes, noe som gjør det svært kostnadseffektivt. Dette er en stor fordel. Samtidig kan kostnadene bli høye dersom man har en stor applikasjon med mye trafikk. Hvis det skjer en feil i systemet, som for eksempel en uoppdaget løkke som kjører kontinuerlig, kan det også føre til uforutsette kostnader. En annen fordel med serverless er at mange forespørsler kan håndteres samtidig, og skaleringen skjer automatisk. Man slipper å administrere servere selv, ettersom dette håndteres av skyplattformen, noe som reduserer stress ved økt belastning. 
+Som vist i forelesning 3, betaler man i en serverless-arkitektur kun for datakraften som faktisk brukes, noe som gjør dette til en svært kostnadseffektiv løsning. Dette er en av de største fordelene ved denne tilnærmingen. Samtidig kan kostnadene eskalere dersom applikasjonen har stor trafikkmengde. I tillegg kan feil, som en uoppdaget løkke som kjører kontinuerlig, føre til uforutsette kostnader. En annen betydelig fordel med serverless-arkitektur er at mange forespørsler kan håndteres samtidig, med automatisk skalering som reduserer behovet for manuell intervensjon. Dette fjerner også behovet for å administrere servere selv, ettersom slike oppgaver håndteres av skyplattformen, noe som reduserer stress ved økt belastning.
 
 En ulempe med serverless er at minneplassen er begrenset, og det er kun midlertidig diskplass tilgjengelig. Likevel er det positivt at ingen kapasitet går til spille. For mindre prosjekter med begrenset budsjett kan serverless være et godt valg, mens større prosjekter med høy trafikk kan ha behov for mikrotjenester.
 
-Mikrotjenester, ved hjelp av containere, kan håndtere krevende oppgaver effektivt. Samtidig har mikrotjenester faste infrastrukturkostnader, uavhengig av trafikkmengden. Dette kan være både positivt og negativt. For mindre prosjekter kan de faste kostnadene bli uforholdsmessig høye, noe som gjør det mindre kostnadseffektivt. Valget mellom serverless og mikrotjenester avhenger derfor av hva man planlegger å lage, budsjettet og om man ønsker å sette opp infrastrukturen selv.
+Som vi lærte i forelesning 5, kan mikrotjenester håndtere krevende oppgaver effektivt ved hjelp av containere. Samtidig innebærer mikrotjenester faste infrastrukturkostnader, uavhengig av trafikkmengden. Dette kan ha både fordeler og ulemper. For mindre prosjekter kan de faste kostnadene bli uforholdsmessig høye, noe som gjør mikrotjenester mindre kostnadseffektive. Valget mellom serverless og mikrotjenester avhenger derfor av hva man planlegger å utvikle, budsjettet som er tilgjengelig, og hvorvidt man ønsker å sette opp infrastrukturen selv.
 
 Mikrotjenester krever ofte manuell skalering, for eksempel ved bruk av Kubernetes eller Docker. Dette kan være tidkrevende og krever forarbeid, men gir mer kontroll over infrastrukturen. En annen fordel med mikrotjenester er fleksibiliteten til å tilpasse minne og ressurser etter behov. Hvis en tjeneste trenger mer minne, kan dette justeres uten å påvirke andre tjenester. Dette gir stor fleksibilitet, men krever nøye oppfølging for å sikre optimal ytelse, noe som kan være krevende.
 
@@ -189,3 +185,5 @@ Når man går fra en mikrotjenestearkitektur til en serverless-arkitektur, endre
 I en mikrotjenestearkitektur har man eierskap til infrastrukturen, som gir større kontroll og fleksibilitet. Her kan man selv velge hvordan overvåkningen og loggføringen skal settes opp, noe som gjør det lettere å tilpasse systemet til spesifikke behov. Kostnadene er faste, noe som krever nøye vurdering av budsjettet. Mikrotjenester passer derfor bedre for større prosjekter, mens serverless egner seg godt for mindre prosjekter med usikker trafikkmengde.
 
 Valget mellom serverless og mikrotjenester avhenger av prosjektets størrelse, kompleksitet, budsjett, teamets kompetanse, tid og ønsket grad av kontroll.
+
+Kilder: 
