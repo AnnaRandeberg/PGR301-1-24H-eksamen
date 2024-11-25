@@ -119,11 +119,18 @@ Leveransekrav:
 
 Alarmen min er konfigurert til å utløses hvis alderen på den eldste meldingen i køen overstiger terskelen min som er satt til 10 sekunder. 
 
+La til alarm emailen min som en variabel i variables.tf og la til emailen min i github secrets. 
+
+bilde av min alarm email i github secrets: 
+![github secrets alarm email](./images/alarm-email.png)
+
 Her ser man et eksempel av når jeg overfylte køen og alarmen min gikk: 
 ![in-alarm](./images/in-alarm.png)
 
 Når alle meldingene har blitt håndtert, så går den tilbake til ok igjen. 
 
 ![in-alarm](./images/alarm-ok-after.png)
+
+
 
 
