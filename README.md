@@ -7,22 +7,9 @@
 ### HTTP-endepunkt: 
     https://gofe2njwi3.execute-api.eu-west-1.amazonaws.com/Prod/generating-image/
 
-
-Her er et skjermbilde av en Postman test jeg gjorde:
-
-![Postman Test](./images/postman.png)
-
-
 ### Verifisering i S3:
 Naviger til S3-bucketen pgr301-couch-explorers og søk på 41.
 Det genererte bilde finner man i /generated_images/    
-
-
-### Konfigurasjon og tilgangskontroll for AWS Lambda-funksjon
-#### Timeout: har endret timeout til 40
-#### IAM-rolle: IAM-rollen jeg brukte til denne oppgaven heter aws-role-lambda00111. Rollen ble opprettet før jeg startet oppgaven, og jeg la til nødvendige tillatelser i template.yaml under AttachPoliciesToExistingRole. Her inkluderte jeg både S3-tillatelser og Bedrock-tillatelser for å sikre at funksjonen kunne utføre sine oppgaver. 
-#### Nødvendige tillatelser knyttet til rollen: s3:PutObject, s3:GetObject, s3:ListBucket. Disse er brukt for å laste opp og hente filer og liste objektene. Har også brukt bedrock:InvokeModel for å bruke bedrock til å generere bilder. Har også brukt AWSLambdaBasicExecutionRole for grunnelggende tillatelser for at aws funkjsonene skal kjøre, og gir meg logg data. 
-#### Regionkonfigurasjon: Har brukt eu-west-1. 
 
 
 ## 1B: Opprett en GitHub Actions Workflow for SAM-deploy 
@@ -39,13 +26,6 @@ Bilde av hvordan aws access keysene mine er lagt til i github repoet mitt
 
 ## Oppgave 2 - Infrastruktur med Terraform og SQS
 ## A. Infrastruktur som kode
-
-### Hvorfor er løsnignen min skalerbar?        
-Løsningen min er skalerbar fordi SQS-køen sørger for at meldinger blir håndtert i et kontrollert tempo, noe som forhindrer overbelastning av Lambda-funksjonen. Dette gjør den mer effektiv under høy belastning. 
-
-### IAM policy
-IAM-policyen min inkluderer kun nødvendige tillatelser som kreves for å fullføre oppgaven. Et problem jeg møtte underveis var at jeg hadde glemt å inkludere tillatelser for Bedrock i policyen. Dette førte til at bildene mine ikke ble lastet opp som forventet. Jeg oppdaget feilen ved å teste SQS-køen og analysere feilmeldinger, som informerte meg om manglende Bedrock-tillatelse. Etter å ha lagt til de nødvendige tillatelsene, fungerte løsningen som den skulle.
-
 
 ### image queue navn: 
     41-image-queue
