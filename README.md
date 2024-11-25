@@ -58,11 +58,6 @@ Det genererte bilde finner man i /images/
         https://sqs.eu-west-1.amazonaws.com/244530008913/41-image-queue
 
 Lagde en github actions workflow som jeg kalte terraform_deploy.yml. Dette skal automatisere deploy prosessen av infrastrukturen. Den kjører terraform apply på main og terraform plan på andre brancher. Har brukt github secrets for å legge til aws access keysene.   
-        
-
-### Branch protection rule
-For å forhindre at feilaktige endringer blir lagt til i main branchen har jeg laget en branch protection rule. 
-![branch protection rule](./images/branch-protection-rule.png)
 
 
 ## Oppgave 3. Javaklient og Docker
