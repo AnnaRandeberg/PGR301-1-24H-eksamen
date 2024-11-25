@@ -105,8 +105,6 @@ Jeg har valgt å bruke både en latest-tag og en commit-hash tag. Ved å bruke l
 Her er et bilde av hvordan det ser ut i dockerhuben min med både en commit hash tag og en latest tag:
 ![dockerhub bilde av tag](./images/dockerhub-tag.png)
 
-Dockerhub link: https://hub.docker.com/r/anra024/41-java-sqs-client/tags
-
 Dockerhub Actions som funker: https://github.com/AnnaRandeberg/PGR301-1-24H-eksamen/actions/runs/11974517991/job/33385767659
 
 Leveransekrav: 
