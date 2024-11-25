@@ -107,6 +107,8 @@ Her er et bilde av hvordan det ser ut i dockerhuben min med både en commit hash
 
 Dockerhub link: https://hub.docker.com/r/anra024/41-java-sqs-client/tags
 
+Dockerhub Actions som funker: https://github.com/AnnaRandeberg/PGR301-1-24H-eksamen/actions/runs/11974517991/job/33385767659
+
 Leveransekrav: 
 ### Container image: 
     anra024/41-java-sqs-client
@@ -125,3 +127,5 @@ Her ser man et eksempel av når jeg overfylte køen og alarmen min gikk:
 Når alle meldingene har blitt håndtert, så går den tilbake til ok igjen. 
 
 ![in-alarm](./images/alarm-ok-after.png)
+
+

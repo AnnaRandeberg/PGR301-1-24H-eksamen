@@ -22,5 +22,8 @@ variable "alarm_threshold" {
 variable "alarm_email" {
   description = "Email address to receive alarm notifications."
   type        = string
+  default     = "anra024@student.kristiania.no"
 }
+
+
 
