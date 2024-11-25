@@ -32,7 +32,7 @@ Det genererte bilde finner man i /generated_images/
     https://github.com/AnnaRandeberg/PGR301-1-24H-eksamen/actions/runs/12009869434/job/33475509473
 
 
-eks. på hvordan aws access keysene mine er lagt til i github repoet mitt
+Bilde av hvordan aws access keysene mine er lagt til i github repoet mitt
 
 ![aws access key lagt til i github](./images/repo-secrets.png)
 
@@ -53,7 +53,7 @@ IAM-policyen min inkluderer kun nødvendige tillatelser som kreves for å fullf�
 send en prompt bilde
 ![bilde eks. av å sende en promt](./images/message-to-sqs-queue-example.png)
 
-Eks. av bilder som ligger i sqs køen
+Bilder som ligger i sqs køen min
 ![bilde eks. av sqs køen](./images/sqs-queue.png)
 
 Verifisering i S3:
@@ -95,6 +95,8 @@ Det genererte bilde finner man i /images/
 
 
 ### B. Lag en GitHub Actions workflow som publiserer container image til Docker Hub
+### Dockerhub Actions som funker: 
+https://github.com/AnnaRandeberg/PGR301-1-24H-eksamen/actions/runs/11974517991/job/33385767659
 
 Bildet nedenfor viser at jeg har lagt til brukernavnet og token mitt i github secrets. Jeg brukte token i docker for å autentisere meg. 
 ![dockerhub passord og brukernavn](./images/dockerhub-username&password-in-github-secrets.png)
@@ -106,9 +108,7 @@ Jeg har valgt å bruke både en latest-tag og en commit-hash tag. Ved å bruke l
 Her er et bilde av hvordan det ser ut i dockerhuben min med både en commit hash tag og en latest tag:
 ![dockerhub bilde av tag](./images/dockerhub-tag.png)
 
-Dockerhub Actions som funker: https://github.com/AnnaRandeberg/PGR301-1-24H-eksamen/actions/runs/11974517991/job/33385767659
 
-Leveransekrav: 
 ### Container image: 
     anra024/41-java-sqs-client
 ### sqs url: 
