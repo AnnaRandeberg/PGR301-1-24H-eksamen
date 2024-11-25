@@ -136,7 +136,8 @@ Når alle meldingene har blitt håndtert, så går den tilbake til ok igjen.
 
 Valget av arkitektur er viktig for hvordan applikasjonen bygges, skaleres og vedlikeholdes. Vi kan velge mellom blant annet mikrotjenestearkitektur og serverless-arkitektur med function-as-a-service. Disse to har mange forskjeller, og valget avhenger av behovene til prosjektet. I denne drøftingen vil jeg se på hva som skiller dem, vurdere fordeler og ulemper, og diskutere hvordan valget påvirker ulike aspekter. Til slutt vil jeg oppsummere med en avsluttende drøfting etter å ha gjennomgått forskjellene.
 
-### 1. Automatisering og CI/CD-pipelines påvirkes ulikt av serverless- og mikrotjenestearkitektur, og begge tilnærmingene har sine fordeler og ulemper. Dette skal vi se nærmere på.
+### 1. 
+Automatisering og CI/CD-pipelines påvirkes ulikt av serverless- og mikrotjenestearkitektur, og begge tilnærmingene har sine fordeler og ulemper. Dette skal vi se nærmere på.
 
 Med en serverless-arkitektur kan man utvikle og kjøre kode uten å måtte sette opp infrastrukturen.Dette sparer utviklere for mye tid. Applikasjonen kjører og leverer fortsatt tjenester, men infrastrukturen håndteres av skyleverandører, som for eksempel AWS, som vi har brukt i vår oppgave. Eksempler på serverless-arkitektur inkluderer AWS Lambda og Amazon SQS.
 
@@ -149,7 +150,8 @@ I en mikrotjenestearkitektur må infrastrukturen bygges fra bunnen av. Siden hve
 
 CI-prosessen i en mikrotjenestearkitektur er ganske lik som i serverless. Koden lagres i for eksempel GitHub, og når den pushes, bygges og testes den ved hjelp av GitHub Actions. En forskjell er at mikrotjenester ofte benytter containere. For eksempel bygges Docker-bilder som lagres i Docker Hub. Containere gir bedre kontroll over applikasjonen og gjør det enklere å implementere CI/CD-pipelines. CI/CD sørger for automatisering av bygging, testing og utrulling av mikrotjenester, noe som gir effektivitet og reduserer risikoen for feil. Terraform kan også brukes til å sette opp infrastrukturen, noe som er nyttig fordi mikrotjenester ofte er mer komplekse. Automatisering gjør det mulig å håndtere mange tjenester effektivt, noe som sparer tid.
 
-### 2. Observability (overvåkning) endres betydelig når man går fra mikrotjenester til serverless-arkitektur, med utfordringer som logging og feilsøking i FaaS-arkitekturen. Dette skal vi se nærmere på.
+### 2. 
+Observability (overvåkning) endres betydelig når man går fra mikrotjenester til serverless-arkitektur, med utfordringer som logging og feilsøking i FaaS-arkitekturen. Dette skal vi se nærmere på.
 
 I en serverless-arkitektur håndteres infrastrukturen av skyleverandøren, som også tilbyr innebygde verktøy for overvåkning og logging. Et eksempel er AWS CloudWatch, som gir logger, alarmer og metrikker for hver funksjon. Dette gjør overvåkningen enklere, siden det blir lettere å oppdage feil (Kilde: Forelesning om alarmer og CloudWatch). En ulempe med dette er imidlertid at overvåkningen kan bli mer fragmentert. Hver funksjon har sin egen livssyklus, og overvåkningen skjer derfor på funksjonsnivå. Dette kan gjøre det utfordrende å få en helhetlig oversikt over systemet. For eksempel kan det bli vanskelig for et team som jobber med ulike deler av systemet å sette sammen informasjonen fra de ulike loggene for å forstå helheten.
 
@@ -159,7 +161,8 @@ Mikrotjenester har færre komponenter sammenlignet med serverless-arkitektur, no
 
 Når det gjelder feilsøking, er dette vanligvis enklere i mikrotjenester. Systemet er mindre oppdelt enn i serverless-arkitektur. I serverless kan det være vanskelig å spore feil tilbake til kilden på grunn av den høye graden av oppdeling. Mikrotjenester har færre, men større tjenester, noe som gjør det lettere å identifisere og rette feil.
 
-### 3. Skalerbarhet og kostnadskontroll har ulike fordeler og ulemper i serverless- og mikrotjenestearkitektur, spesielt når det gjelder ressursytelse og kostnadsoptimalisering.
+### 3. 
+Skalerbarhet og kostnadskontroll har ulike fordeler og ulemper i serverless- og mikrotjenestearkitektur, spesielt når det gjelder ressursytelse og kostnadsoptimalisering.
 
 I en serverless-arkitektur betaler man kun for datakraften som faktisk brukes, noe som gjør det svært kostnadseffektivt. Dette er en stor fordel. Samtidig kan kostnadene bli høye dersom man har en stor applikasjon med mye trafikk. Hvis det skjer en feil i systemet, som for eksempel en uoppdaget løkke som kjører kontinuerlig, kan det også føre til uforutsette kostnader. En annen fordel med serverless er at mange forespørsler kan håndteres samtidig, og skaleringen skjer automatisk. Man slipper å administrere servere selv, ettersom dette håndteres av skyplattformen, noe som reduserer stress ved økt belastning. 
 
@@ -169,7 +172,8 @@ Mikrotjenester, ved hjelp av containere, kan håndtere krevende oppgaver effekti
 
 Mikrotjenester krever ofte manuell skalering, for eksempel ved bruk av Kubernetes eller Docker. Dette kan være tidkrevende og krever forarbeid, men gir mer kontroll over infrastrukturen. En annen fordel med mikrotjenester er fleksibiliteten til å tilpasse minne og ressurser etter behov. Hvis en tjeneste trenger mer minne, kan dette justeres uten å påvirke andre tjenester. Dette gir stor fleksibilitet, men krever nøye oppfølging for å sikre optimal ytelse, noe som kan være krevende.
 
-### 4. Eierskap og ansvar påvirkes ulikt i serverless- og mikrotjenestearkitektur, spesielt når det gjelder applikasjonens ytelse, pålitelighet og kostnader. Begge tilnærmingene har sine styrker og svakheter.
+### 4. 
+Eierskap og ansvar påvirkes ulikt i serverless- og mikrotjenestearkitektur, spesielt når det gjelder applikasjonens ytelse, pålitelighet og kostnader. Begge tilnærmingene har sine styrker og svakheter.
 
 I en serverless-arkitektur slipper man å sette opp infrastrukturen selv, noe som er en stor fordel. Ansvar for infrastrukturen ligger hos skytjenesteleverandøren, noe som sparer utviklere for mye tid. Dette lar dem fokusere mer på funksjonalitet. Likevel må utviklere overvåke kostnadene nøye. Selv om man kun betaler for det som faktisk brukes, noe som er både praktisk og kostnadseffektivt, kan uforutsette feil, som en endeløs løkke, føre til høye kostnader.
 
