@@ -5,7 +5,7 @@
 
 ## Leveransekrav:
 ### HTTP-endepunkt: 
-    https://gofe2njwi3.execute-api.eu-west-1.amazonaws.com/Prod/generating-image/    
+    https://gofe2njwi3.execute-api.eu-west-1.amazonaws.com/Prod/generating-image/
 
 
 Her er et skjermbilde av en Postman test jeg gjorde:
@@ -64,12 +64,12 @@ Det genererte bilde finner man i /images/
 ## Leveransekrav
 ### Lenke til kjørt GitHub Actions workflow:  
         
-        https://github.com/AnnaRandeberg/PGR301-1-24H-eksamen/actions/runs/11898369726/job/33154714988 
+        https://github.com/AnnaRandeberg/PGR301-1-24H-eksamen/actions/runs/11898369726/job/33154714988
 
 
 ### Lenke til en fungerende GitHub Actions workflow (ikke main): 
     
-        https://github.com/AnnaRandeberg/PGR301-1-24H-eksamen/actions/runs/11897912330 
+        https://github.com/AnnaRandeberg/PGR301-1-24H-eksamen/actions/runs/11897912330
 
 
 ### SQS-Kø URL:  
